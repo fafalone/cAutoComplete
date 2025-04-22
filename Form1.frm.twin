@@ -1,0 +1,87 @@
+[FormDesignerId("76E17672-B480-4CBE-B138-2AE05AAFAC0B")]
+[ClassId("6CD539B9-DEF7-46A5-AAA8-592C91848DBB")]
+[InterfaceId("1FB26D64-31AA-4801-9E5C-E9D452A09B17")]
+[EventInterfaceId("23030FCB-52B0-434B-8DB9-14AE84409A3F")]
+Class Form1
+    Attribute VB_Name = "Form1"
+    Attribute VB_GlobalNameSpace = False
+    Attribute VB_Creatable = False
+    Attribute VB_PredeclaredId = True
+    Attribute VB_Exposed = False
+    Option Explicit
+    Private cACL As cAutoComplete
+    Private sTerms() As String
+    Private vTerms As Variant
+    
+    Private Sub Command1_Click()
+    If (cACL Is Nothing) Then
+        Set cACL = New cAutoComplete
+    End If
+    cACL.AC_Filesys Text2.hWnd, ACO_AUTOSUGGEST Or ACO_AUTOAPPEND
+    Timer1.Interval = 3000
+    Timer1.Enabled = True
+    End Sub
+    
+    Private Sub Command2_Click()
+    If (cACL Is Nothing) Then
+        Set cACL = New cAutoComplete
+    End If
+    cACL.AC_ACList2 Text2.hWnd, ACO_AUTOSUGGEST Or ACO_AUTOAPPEND, ACLO_FILESYSDIRS Or ACLO_DESKTOP
+    End Sub
+    
+    Private Sub Command3_Click()
+    If (cACL Is Nothing) Then
+        Set cACL = New cAutoComplete
+    End If
+    cACL.AC_History Text2.hWnd, ACO_AUTOSUGGEST Or ACO_AUTOAPPEND
+    End Sub
+    
+    Private Sub Command4_Click()
+    If (cACL Is Nothing) Then
+        Set cACL = New cAutoComplete
+    End If
+    cACL.AC_MRU Text2.hWnd, ACO_AUTOSUGGEST Or ACO_AUTOAPPEND
+    End Sub
+    
+    Private Sub Command5_Click()
+    If (cACL Is Nothing) Then
+        Set cACL = New cAutoComplete
+    End If
+    sTerms = Split(Text1.Text, vbCrLf)
+    cACL.AC_Custom Text2.hWnd, sTerms, ACO_AUTOSUGGEST Or ACO_AUTOAPPEND
+    End Sub
+    
+    Private Sub Command6_Click()
+    If (cACL Is Nothing) Then
+        Set cACL = New cAutoComplete
+    End If
+    vTerms = Split(Text1.Text, vbCrLf)
+    cACL.AC_Multi Text2.hWnd, ACO_AUTOSUGGEST Or ACO_AUTOAPPEND, ACLO_FILESYSDIRS, True, True, True, True, vTerms
+    
+    End Sub
+    
+    Private Sub Command7_Click()
+    If (cACL Is Nothing) Then Exit Sub
+    cACL.AC_Disable
+    End Sub
+    
+    Private Sub Command8_Click()
+    If (cACL Is Nothing) Then Exit Sub
+    
+    cACL.AC_Disable
+    Set cACL = Nothing
+    End Sub
+    
+    Private Sub Command9_Click()
+    sTerms = Split(Text1.Text, vbCrLf)
+    cACL.UpdateCustomTerms sTerms
+    End Sub
+    
+    Private Sub Timer1_Timer()
+    Dim l As Long, s As String
+    cACL.DropdownStatus l, s
+    Debug.Print "status=" & l & ",str=" & s
+    End Sub
+    
+
+End Class
