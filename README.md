@@ -167,7 +167,7 @@ Note that in addition to the change of moving the code here from the old redirec
 
 
 ```vba
-IEnumString_Next(ByVal celt As Long, rgelt As LongPtr, pceltFetched As Long)
+Private Sub IEnumString_Next(ByVal celt As Long, rgelt As LongPtr, pceltFetched As Long)
 Debug.Print "cEnumString_Next"
 Dim lpString As LongPtr
 Dim i As Long
