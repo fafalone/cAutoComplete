@@ -166,7 +166,8 @@ Implementing IEnumString's functions\
 Note that in addition to the change of moving the code here from the old redirects, there's the small change that to be more correct and in line with the documented signature (`LPOLESTR *`), the `rgelt` argument of `IEnumString::Next` has been changed from ByVal to ByRef. This means the string pointers have to be copied to `VarPtr(rgelt)` instead of just `rgelt`. There's also a bugfix fixing mismatched parentheses for `CoTaskMemAlloc`
 
 
-```vbaIEnumString_Next(ByVal celt As Long, rgelt As LongPtr, pceltFetched As Long)
+```vba
+IEnumString_Next(ByVal celt As Long, rgelt As LongPtr, pceltFetched As Long)
 Debug.Print "cEnumString_Next"
 Dim lpString As LongPtr
 Dim i As Long
