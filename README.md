@@ -214,7 +214,7 @@ For the complete code, see the attached project.
 
 ### Requirements 
 -Windows Development Library for twinBASIC (WinDevLib)\
--WinDevLib for Implements
+-WinDevLib for Implements (should be after WinDevLib in priority list)
 
 ### Thanks 
 Krool's project mentioned above is what inspired me to do this, and I borrowed a few techniques from his project, especially for IEnumString.
