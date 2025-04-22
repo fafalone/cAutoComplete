@@ -5,6 +5,8 @@ This is a port of my original VB6 project: [[VB6] Using IAutoComplete / IAutoCom
 
 It replaces oleexp.tlb with WinDevLib/WinDevLibImpl, which with tB allows greatly simplifying things by eliminating v-table redirects. It's been updated to also be x64 compatible.
 
+>[!NOTE]
+>The twinproj is in a zip since it exceeds GitHub's 25MB limit; tB still includes all files and duplicates references, so it includes WinDevLib (13MB) and WinDevLibImpl which has its own copy of WinDevLib as its base.
 ----
 
 ![jgjDdBD](https://github.com/user-attachments/assets/894a28ba-c1e6-4165-bb4e-fbe498aadfb0)
